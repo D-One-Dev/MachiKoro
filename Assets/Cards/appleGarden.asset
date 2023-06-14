@@ -10,11 +10,13 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: faa843338cd549e46b0383bf0d0c6b3f, type: 3}
-  m_Name: Field
+  m_Name: appleGarden
   m_EditorClassIdentifier: 
-  cardName: "\u041F\u0448\u0435\u043D\u0438\u0447\u043D\u043E\u0435 \u043F\u043E\u043B\u0435"
-  cardType: corn
-  triggerValue: 1
+  cardName: "\u042F\u0431\u043B\u043E\u043D\u0435\u0432\u044B\u0439 \u0441\u0430\u0434"
+  cardType: wheat
+  triggerValue: 0a000000
   triggerType: 0
-  effect: "\u041F\u0440\u0438\u043D\u043E\u0441\u0438\u0442 1 \u043C\u043E\u043D\u0435\u0442\u0443"
-  buildPrice: 1
+  effect: "\u0412\u043E\u0437\u044C\u043C\u0438\u0442\u0435 3 \u043C\u043E\u043D\u0435\u0442\u044B
+    \u0438\u0437 \u0431\u0430\u043D\u043A\u0430."
+  effectCommand: coin+ 3
+  buildPrice: 3

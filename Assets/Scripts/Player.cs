@@ -6,5 +6,5 @@ using UnityEngine;
 public class Player : ScriptableObject
 {
     public int coins;
-    public Card[] cards;
+    public List<Card> cards;
 }

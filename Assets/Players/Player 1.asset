@@ -10,8 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 359f6874c83dbcc45a812d3fb4b7bbd0, type: 3}
-  m_Name: Player
+  m_Name: Player 1
   m_EditorClassIdentifier: 
-  coins: 5
-  cards:
-  - {fileID: 11400000, guid: b8c72c8dda373874bbd0707bc6aa738a, type: 2}
+  coins: 1
+  cards: []
