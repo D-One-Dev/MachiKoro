@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 
@@ -25,6 +23,13 @@ public class Dice : MonoBehaviour
     public void RollOneDice()
     {
         int value = ReturnDiceValue(false);
+        diceValue.text = value.ToString();
+        gameController.GetComponent<GameController>().NewRound(value);
+    }
+
+    public void RollTwoDice()
+    {
+        int value = ReturnDiceValue(true);
         diceValue.text = value.ToString();
         gameController.GetComponent<GameController>().NewRound(value);
     }
