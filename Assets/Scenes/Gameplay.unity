@@ -3261,7 +3261,8 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'Current player: 1'
+  m_text: "\u0422\u0435\u043A\u0443\u0449\u0438\u0439 \u0438\u0433\u0440\u043E\u043A:
+    1"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: e0b801ed16eb24e4e8fe4255ae27cb74, type: 2}
   m_sharedMaterial: {fileID: 1885177238625569113, guid: e0b801ed16eb24e4e8fe4255ae27cb74, type: 2}
@@ -4122,7 +4123,7 @@ MonoBehaviour:
   m_enableAutoSizing: 1
   m_fontSizeMin: 18
   m_fontSizeMax: 72
-  m_fontStyle: 1
+  m_fontStyle: 0
   m_HorizontalAlignment: 2
   m_VerticalAlignment: 512
   m_textAlignment: 65535

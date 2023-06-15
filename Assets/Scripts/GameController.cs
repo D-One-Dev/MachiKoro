@@ -40,36 +40,68 @@ public class GameController : MonoBehaviour
         dice2Button.interactable = false;
         shopButton.interactable = true;
         endTurnButton.interactable = true;
-        foreach (var player in players)
+
+        foreach (var player in players) //red cards
         {
             foreach (var card in player.cards)
             {
                 if (card.triggerValue.Contains(diceValue))
                 {
-                    if(card.triggerType == 0) //blue cards
-                    {
-                        Action(card.effectCommand, player);
-                    }
-                    else if (card.triggerType == 1 && players[currentPlayer] == player) //green and violet cards
-                    {
-                        Action(card.effectCommand, player);
-                    }
-                    else if (card.triggerType == 2 && players[currentPlayer] != player) //red cards
+                    if (card.triggerType == 2 && players[currentPlayer] != player)
                     {
                         Action(card.effectCommand, player);
                     }
                 }
             }
-        }   
+        }
+
+        foreach (var player in players) //blue cards
+        {
+            foreach (var card in player.cards)
+            {
+                if (card.triggerValue.Contains(diceValue))
+                {
+                    if (card.triggerType == 0)
+                    {
+                        Action(card.effectCommand, player);
+                    }
+                }
+            }
+        }
+
+        foreach (var player in players) //green cards
+        {
+            foreach (var card in player.cards)
+            {
+                if (card.triggerValue.Contains(diceValue))
+                {
+                    if (card.triggerType == 1 && players[currentPlayer] == player)
+                    {
+                        Action(card.effectCommand, player);
+                    }
+                }
+            }
+        }
+
+        foreach (var player in players) //violet cards
+        {
+            foreach (var card in player.cards)
+            {
+                if (card.triggerValue.Contains(diceValue))
+                {
+                    if (card.triggerType == 3 && players[currentPlayer] == player)
+                    {
+                        Action(card.effectCommand, player);
+                    }
+                }
+            }
+        }
     }
 
     private void Action(string command, Player curPlayer) 
     {
+        Debug.LogFormat(command);
         string[] commands = command.Split();
-        foreach (var cmd in commands)
-        {
-            Debug.Log(cmd);
-        }
 
 
         if (commands[0] == "coin+")
@@ -190,7 +222,7 @@ public class GameController : MonoBehaviour
         }
         if (currentPlayer + 1 < playerCount) currentPlayer++;
         else currentPlayer = 0;
-        curPlayerText.text = "Current player: " + (currentPlayer + 1).ToString();
+        curPlayerText.text = "Текущий игрок: " + (currentPlayer + 1).ToString();
         shopButton.interactable = false;
         endTurnButton.interactable = false;
         dice1Button.interactable = true;

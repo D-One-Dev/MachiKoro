@@ -11,7 +11,7 @@ public class MenuController : MonoBehaviour
     public void SliderUpdate()
     {
         playerCountSliderValue = Mathf.RoundToInt(playerCountSlider.value);
-        playerCountText.text = "Players: " + playerCountSliderValue.ToString();
+        playerCountText.text = "Игроков: " + playerCountSliderValue.ToString();
     }
 
     public void StartBaseGame()
