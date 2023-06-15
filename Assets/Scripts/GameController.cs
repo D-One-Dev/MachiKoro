@@ -1,17 +1,23 @@
 using System;
+using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 
 public class GameController : MonoBehaviour
 {
     public Player[] players;
+    public Card[] cards;
+    private int playerCount;
 
     private void Start()
     {
-        foreach (var player in players)
+        playerCount = PlayerPrefs.GetInt("playerCount", 2);
+        players = new Player[playerCount];
+        for (int i = 0; i < players.Length; i++)
         {
-            player.cards.Clear();
-            player.coins = 3;
+            players[i] = ScriptableObject.CreateInstance<Player>();
+            players[i].coins = 3;
+            players[i].cards = new List<Card> {cards[0], cards[1]};
         }
     }
     public void NewRound(int diceValue)
