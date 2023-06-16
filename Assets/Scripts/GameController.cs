@@ -17,6 +17,12 @@ public class GameController : MonoBehaviour
     public GameObject[] playersUI;
     private int reqSightsCount;
     public GameObject[] chooseButtons;
+    public GameObject inventoryUI;
+    public GameObject inventoryContent;
+    public GameObject inventoryCardPrefab;
+    public Color[] cardColors;
+
+    private List<GameObject> cardList = new List<GameObject>();
 
     private void Start()
     {
@@ -236,5 +242,77 @@ public class GameController : MonoBehaviour
             TMP_Text[] playerUITexts = playersUI[i].GetComponentsInChildren<TMP_Text>();
             playerUITexts[1].text = "Монет: " + players[i].coins;
         }
+    }
+
+    public void OpenPlayerInventory(int playerID)
+    {
+        if(cardList.Count != 0) foreach (GameObject oldCard in cardList) Destroy(oldCard.gameObject);
+        cardList.Clear();
+        foreach (var card in players[playerID].cards)
+        {
+            GameObject cardUI = Instantiate(inventoryCardPrefab, Vector2.zero, Quaternion.identity, inventoryContent.GetComponent<Transform>());
+            cardList.Add(cardUI);
+            cardUI.GetComponentInChildren<Image>().color = cardColors[card.triggerType];
+            TMP_Text[] cardTexts = cardUI.GetComponentsInChildren<TMP_Text>();
+            cardTexts[0].text = card.cardName;
+            if(card.triggerValue.Length == 1) cardTexts[1].text = card.triggerValue[0].ToString();
+            else cardTexts[1].text = card.triggerValue[0].ToString() + "-" + card.triggerValue[card.triggerValue.Length-1].ToString();
+            switch (card.cardType)
+            {
+                case "sight":
+                    {
+                        cardTexts[2].text = "Достопримечательность";
+                        break;
+                    }
+                case "wheat":
+                    {
+                        cardTexts[2].text = "Пшеница";
+                        break;
+                    }
+                case "trade":
+                    {
+                        cardTexts[2].text = "Торговля";
+                        break;
+                    }
+                case "tower":
+                    {
+                        cardTexts[2].text = "Вышка";
+                        break;
+                    }
+                case "cup":
+                    {
+                        cardTexts[2].text = "Чашка";
+                        break;
+                    }
+                case "factory":
+                    {
+                        cardTexts[2].text = "Завод";
+                        break;
+                    }
+                case "cow":
+                    {
+                        cardTexts[2].text = "Корова";
+                        break;
+                    }
+                case "gear":
+                    {
+                        cardTexts[2].text = "Шестерня";
+                        break;
+                    }
+                case "fruit":
+                    {
+                        cardTexts[2].text = "Фрукт";
+                        break;
+                    }
+                default:
+                    {
+                        cardTexts[2].text = "Error";
+                        break;
+                    }
+            }
+            cardTexts[3].text = card.buildPrice.ToString();
+            cardTexts[4].text = card.effect;
+        }
+        inventoryUI.SetActive(true);
     }
 }

@@ -6,7 +6,8 @@ public class Card : ScriptableObject
     public string cardType;
     public int[] triggerValue;
     public int triggerType; //0-blue card(any player turn), 1-green card(your turn),
-                            //2-red card(other player turn), 3-violet card(your turn)
+                            //2-red card(other player turn), 3-violet card(your turn),
+                            //4-brown card(sights)
     public string effect;
     public string effectCommand;
     public int buildPrice;
