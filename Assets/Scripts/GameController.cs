@@ -4,6 +4,7 @@ using System.Linq;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
+using UnityEngine.SceneManagement;
 
 public class GameController : MonoBehaviour
 {
@@ -16,7 +17,6 @@ public class GameController : MonoBehaviour
     public Button dice1Button, dice2Button, shopButton, endTurnButton; //Action buttons
     public GameObject[] playersUI; //Players ui panels
     private int reqSightsCount; //Required amount of sights to win
-    public GameObject[] chooseButtons; //Buttons for choosing the player getting the card effect
     public GameObject inventoryUI; //Inventory ui
     public GameObject inventoryContent; //Inventory contents
     public GameObject inventoryCardPrefab; //Inventory card prefab
@@ -31,7 +31,6 @@ public class GameController : MonoBehaviour
         playerCount = PlayerPrefs.GetInt("playerCount", 2); //Setting the amount of players
         players = new Player[playerCount]; //Creating a new array of players
         foreach (var playerUI in playersUI) playerUI.SetActive(false); //Disabling all player ui panels
-        foreach (var chooseButton in chooseButtons) chooseButton.SetActive(false); //Disabling all player choose buttons
         for (int i = 0; i < players.Length; i++) //Setting the players up
         {
             players[i] = ScriptableObject.CreateInstance<Player>(); //Creating new player
@@ -39,7 +38,6 @@ public class GameController : MonoBehaviour
             players[i].coins = 3; //Setting the default amount of coins
             players[i].cards = new List<Card> {cards[0], cards[1]}; //Setting the default cards
             playersUI[i].SetActive(true); //Enabling the palyer ui
-            chooseButtons[i].SetActive(true); //Enabling the choose button
         }
     }
     public void NewTurn(int diceValue) //New turn
@@ -224,6 +222,7 @@ public class GameController : MonoBehaviour
             shopUI.SetActive(false); //Close the shop ui
             shopButton.interactable = false; //Disable the shop button
             UpdatePlayersUI(); //Update palyers ui
+            AddLog("Игрок " + players[currentPlayer].name + " приобрел карту: " + card.cardName);
         }
     }
 
@@ -334,5 +333,10 @@ public class GameController : MonoBehaviour
     private void AddLog(string log)
     {
         logPanel.GetComponent<LogController>().AddLog(log);
+    }
+
+    public void ExitToMenu()
+    {
+        SceneManager.LoadScene("Menu");
     }
 }

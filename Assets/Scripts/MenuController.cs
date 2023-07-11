@@ -25,4 +25,9 @@ public class MenuController : MonoBehaviour
         PlayerPrefs.SetString("gameType", "base"); //Saving the game type
         SceneManager.LoadScene("gameplay"); //Loading the gameplay scene
     }
+
+    public void ExitGame()
+    {
+        Application.Quit();
+    }
 }
